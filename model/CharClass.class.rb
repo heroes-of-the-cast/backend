@@ -59,19 +59,19 @@ module CharClasses
 			ret = CharClass.make(cclass, "Neutral", "Nothing", Stats.create(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		when "clasher"
 			ret = CharClass.make(cclass, "Clasher", "Clashers do not evade confrontation, the key to a good defense is a strong offence.", 
-									Stats.create(:strength =&gt; 2,:speed =&gt; 1,:serenity =&gt; 1,:stamina =&gt; 1,:sorcery =&gt; 1))
+									Stats.create(:strength => 2,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		when "chaser"
 			ret = CharClass.make(cclass, "Chaser", "Chasers pursue their enemies and take advantage of their superior speed in battle.", 
-									Stats.create(:strength =&gt; 1,:speed =&gt; 2,:serenity =&gt; 1,:stamina =&gt; 1,:sorcery =&gt; 1))
+									Stats.create(:strength => 1,:speed => 2,:serenity => 1,:stamina => 1,:sorcery => 1))
 		when "concentrator"
 			ret = CharClass.make(cclass, "Concentrator", "Concentrators will not lose focus, their attacks are decisive", 
-									Stats.create(:strength =&gt; 1,:speed =&gt; 1,:serenity =&gt; 2,:stamina =&gt; 1,:sorcery =&gt; 1))
+									Stats.create(:strength => 1,:speed => 1,:serenity => 2,:stamina => 1,:sorcery => 1))
 		when "conserver"
 			ret = CharClass.make(cclass, "Conserver", "Conservers are efficient contenders and are often able to emerge victorious through endurance.", 
-									Stats.create(:strength =&gt; 1,:speed =&gt; 1,:serenity =&gt; 1,:stamina =&gt; 2,:sorcery =&gt; 1))
+									Stats.create(:strength => 1,:speed => 1,:serenity => 1,:stamina => 2,:sorcery => 1))
 		when "caster"
 			ret = CharClass.make(cclass, "Caster", "Casters are masters of non-physical attacks, beware their power.", 
-									Stats.create(:strength =&gt; 1,:speed =&gt; 1,:serenity =&gt; 1,:stamina =&gt; 1,:sorcery =&gt; 2))
+									Stats.create(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 2))
 		end
 		
 		ret
