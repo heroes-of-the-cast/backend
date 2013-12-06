@@ -5,12 +5,34 @@ class CharClass < StatModifyingProperty
 end
 
 # Collection of defined [CharClass]s
-module Races
-	# A totally neutral class that does nothing
+module CharClasses
+	# @returns [CharClass] A totally neutral cclass that does nothing
 	def self.Neutral
-		ret = CharClass.first(:name => "Neutral")
+		CharClasses::get "neutral"
+	end
+	
+	# Gets a class
+	#
+	# @param [String] class alias of the CharClass you want to get
+	# @returns [CharClass] the requested class
+	def self.get cclass
+		ret = CharClass.first(:alias => cclass)
 		if ret.nil?
+			ret = make cclass
+		end
+		ret
+	end
+	
+	# Makes a new CharClass
+	# This should only be called when a CharClass doesn't exist yet, no further checks will be done
+	#
+	# @param [String] cclass alias of the CharClass you want to create (which should not yet exist in the database)
+	# @param [CharClass] the cclass you wanted to create
+	def make cclass
+		case cclass
+		when "neutral"
 			ret = CharClass.create(
+				:alias => "neutral",
 				:name => "Neutral",
 				:description => "Nothing",
 				:modifiers => Stats.create(
@@ -22,6 +44,9 @@ module Races
 				)
 			)
 		end
+		
 		ret
 	end
+	
+	private :make
 end

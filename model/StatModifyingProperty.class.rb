@@ -4,6 +4,9 @@
 class StatModifyingProperty
 	include MongoMapper::Document
 	
+	# @returns [String] a unique, simple, alias for usage in the API
+	key :alias, String
+	
 	key :name, String
 	
 	key :description, String
@@ -12,4 +15,4 @@ class StatModifyingProperty
 	key :modifiers, Stats
 end
 
-StatModifyingProperty.ensure_index [[:name, 1]]
+StatModifyingProperty.ensure_index [[:alias, 1]]
