@@ -31,18 +31,7 @@ module Races
 	def make race
 		case race
 		when "neutral"
-			ret = Race.create(
-				:alias => "neutral",
-				:name => "Neutral",
-				:description => "Nothing",
-				:modifiers => Stats.create(
-					:strength => 1,
-					:speed => 1,
-					:serenity => 1,
-					:stamina => 1,
-					:sorcery => 1
-				)
-			)
+			ret = Race.make(race, "Neutral", "Nothing",Stats.create(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		end
 		
 		ret

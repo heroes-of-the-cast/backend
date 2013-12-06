@@ -3,7 +3,7 @@
 # These are pretty subjected to change right now, since I haven't figured out much of the actual game yet
 #
 # @author Tim van Dalen
-class BaseStats
+class Stats
 	include MongoMapper::EmbeddedDocument
 	
 	# @return [Integer] character strength

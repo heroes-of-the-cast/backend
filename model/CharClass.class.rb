@@ -31,18 +31,7 @@ module CharClasses
 	def make cclass
 		case cclass
 		when "neutral"
-			ret = CharClass.create(
-				:alias => "neutral",
-				:name => "Neutral",
-				:description => "Nothing",
-				:modifiers => Stats.create(
-					:strength => 1,
-					:speed => 1,
-					:serenity => 1,
-					:stamina => 1,
-					:sorcery => 1
-				)
-			)
+			ret = CharClass.make(cclass, "Neutral", "Nothing",Stats.create(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		end
 		
 		ret
