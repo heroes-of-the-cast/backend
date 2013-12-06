@@ -14,6 +14,6 @@ class BaseStats
 	key :serenity, Integer
 	# @return [Integer] character stamina
 	key :stamina, Integer
-	# @return [Integer] character magic (I should really find an S-word for magic EDIT: duh, sorcery)
-	key :magic, Integer
+	# @return [Integer] character sorcery
+	key :sorcery, Integer
 end

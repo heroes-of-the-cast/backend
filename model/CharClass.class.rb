@@ -40,7 +40,7 @@ module CharClasses
 					:speed => 1,
 					:serenity => 1,
 					:stamina => 1,
-					:magic => 1
+					:sorcery => 1
 				)
 			)
 		end
