@@ -32,7 +32,7 @@ module CharClasses
 	def self.make cclass
 		case cclass
 		when "neutral"
-			ret = CharClass.make(cclass, "Neutral", "Nothing", Stats.new(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
+			ret = CharClass.make(cclass, "Neutral", "Nothing(class type)", Stats.new(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		when "clasher"
 			ret = CharClass.make(cclass, "Clasher", "Clashers do not evade confrontation, the key to a good defense is a strong offence.", 
 									Stats.new(:strength => 2,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
