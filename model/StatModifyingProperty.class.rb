@@ -4,7 +4,7 @@
 class StatModifyingProperty
 	include MongoMapper::Document
 	
-	# @returns [String] a unique, simple, alias for usage in the API
+	# @return [String] a unique, simple, alias for usage in the API
 	key :alias, String
 	
 	key :name, String
@@ -16,7 +16,7 @@ class StatModifyingProperty
 	
 	# Makes a new StatModifyingProperty
 	#
-	# @param [String] alias the alias for this new property
+	# @param [String] p_alias the alias for this new property
 	# @param [String] name friendly name
 	# @param [String] description back-story
 	# @param [Stats] stats the actual modifiers. 1 is no modification, <1 is down scaling, >1 is up scaling
@@ -28,6 +28,17 @@ class StatModifyingProperty
 			:description => description,
 			:modifiers => stats
 		)
+	end
+	
+	# Hash representation of this property
+	#
+	# @return [Hash] representation of this property, to be JSONified
+	def as_json opt
+		{
+			'alias' => self.alias,
+			'name' => name,
+			'description' => description
+		}
 	end
 end
 
