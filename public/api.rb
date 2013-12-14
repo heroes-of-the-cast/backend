@@ -2,30 +2,55 @@ get '/' do
 	"Not yet implemented"
 end
 
+# Creates a new user
+#
+# @param [String] username the name for the new user
+# @param [String] password new password, unhashed
+# @raise [APIError] if the username is a reserved word or if a user by that name already exists
+# @return [User] the newly recreated user
+post '/user/create' do
+	content_type :json
+	require_relative 'user/create.rb'
+	
+	API::UserMethods::create(params[:username], params[:password]).to_json
+end
+
+# Gets new user
+#
+# @param [String] name the name to search for
+# @raise [APIError] if no such user exists
+# @return [User] the requested user
+get '/user/:name' do
+	content_type :json
+	require_relative 'user/get.rb'
+	
+	API::UserMethods::get(params[:name]).to_json
+end
+
 get '/character/race/list' do
 	content_type :json
 	require_relative 'character/race/list.rb'
 	
-	Character::Race::getlist
+	API::Character::Race::getlist.to_json
 end
 
 get '/character/race/:alias' do
 	content_type :json
 	require_relative 'character/race/get.rb'
 	
-	Character::Race::getrace params[:alias]
+	API::Character::Race::getrace(params[:alias]).to_json
 end
 
 get '/character/class/list' do
 	content_type :json
 	require_relative 'character/class/list.rb'
 	
-	Character::Class::getlist
+	API::Character::Class::getlist.to_json
 end
 
 get '/character/class/:alias' do
 	content_type :json
 	require_relative 'character/class/get.rb'
 	
-	Character::Class::getclass params[:alias]
+	API::Character::Class::getclass(params[:alias]).to_json
 end

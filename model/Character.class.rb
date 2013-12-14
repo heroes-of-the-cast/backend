@@ -8,8 +8,8 @@ class Character
 	belongs_to :user
 	
 	# @return [Race] the race this char is of
-	has :race
+	one :race
 	
 	# @return [CharClass] the character's class
-	has :class
+	one :class
 end

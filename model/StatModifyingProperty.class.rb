@@ -33,12 +33,8 @@ class StatModifyingProperty
 	# Hash representation of this property
 	#
 	# @return [Hash] representation of this property, to be JSONified
-	def as_json opt
-		{
-			'alias' => self.alias,
-			'name' => name,
-			'description' => description
-		}
+	def as_json(options={})
+		super({ :only => [:alias, :name, :description] })
 	end
 end
 
