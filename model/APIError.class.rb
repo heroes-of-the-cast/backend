@@ -13,6 +13,10 @@
 #         type: UserNotFoundError
 #         description: Thrown when someone tries to query a user that doesn't exist
 #         params: [0: name]
+#     13:
+#         type: LoginError
+#         descript: Thrown when login credentials aren't correct
+#         params: []
 #     2:
 #         type: CharExistsError
 #         description: Thrown when someone wants to create a character with a name that already exists for that user
@@ -45,6 +49,9 @@ class APIError
 		when 12
 			@type = "UserNotFoundError"
 			@message = "User #{params[0]} doesn't exist"
+		when 13
+			@type = "LoginError"
+			@message = "Wrong credentials"
 		when 2
 			@type = "CharExistsError"
 			@message = "Character #{params[1]} for user #{params[0]} already exists in the system"

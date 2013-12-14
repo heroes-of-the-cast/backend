@@ -27,6 +27,19 @@ get '/user/:name' do
 	API::UserMethods::get(params[:name]).to_json
 end
 
+# Logs a user in
+#
+# @param [String] username the name of the user
+# @param [String] password that users password, unhashed
+# @raise [APIError] if the credentials are wrong
+# @return [Session] new session with a key in it
+post '/user/login' do
+	content_type :json
+	require_relative 'user/login.rb'
+	
+	API::UserMethods::login(params[:username], params[:password], request.user_agent, request.ip).to_json
+end
+
 get '/character/race/list' do
 	content_type :json
 	require_relative 'character/race/list.rb'

@@ -11,7 +11,7 @@ module API
 		
 		# Gets a user
 		#
-		# @param [String] username the name for the new user
+		# @param [String] username the name of the user
 		# @param [User] the requested user
 		def get username
 			user = User.first(:username => username)
