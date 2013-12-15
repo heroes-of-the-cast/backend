@@ -58,6 +58,13 @@ post '/user/:username/character/create' do
 	API::UserMethods::CharacterMethods::create(params[:name], params[:race], params[:class], params[:session_key]).to_json
 end
 
+get '/character/race/list' do
+	content_type :json
+	require_relative 'character/race/list.rb'
+
+	API::Character::Race::getlist.to_json
+end
+
 get '/character/race/:alias' do
 	content_type :json
 	require_relative 'character/race/get.rb'
