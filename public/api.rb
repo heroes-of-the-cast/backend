@@ -40,11 +40,27 @@ post '/user/login' do
 	API::UserMethods::login(params[:username], params[:password], request.user_agent, request.ip).to_json
 end
 
-get '/character/race/list' do
+# Creates a new character
+#
+# @param [String] username the user for which to create this character
+# @param [String] name name of the character
+# @param [String] race race alias of the character
+# @param [String] class class alias of the character
+# @param [String] session_key valid Session key
+# @return [Character] the newly created character
+post '/user/:username/character/create' do
 	content_type :json
-	require_relative 'character/race/list.rb'
-	
-	API::Character::Race::getlist.to_json
+	require_relative 'user/helpers/auth.rb'
+	require_relative 'user/character/create.rb'
+
+	#TODO: stop assuming that :username is always me here
+
+	begin
+		API::UserMethods::CharacterMethods::create(params[:name], params[:race], params[:class], params[:session_key]).to_json
+	rescue SystemStackError
+		caller.to_json
+	end
+
 end
 
 get '/character/race/:alias' do
