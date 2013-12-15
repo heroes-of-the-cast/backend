@@ -22,7 +22,7 @@ module API
 			# @return [Bool] whether or not it exists
 			def exists?(user, charname)
 				#TODO: Figure out why querying for user fails
-				not Character.first(:user => { :name => user.username }, :name => charname).nil?
+				not Character.first(:user_id => user._id, :name => charname).nil?
 			end
 
 			# Checks if a character name is a reserved word
@@ -53,8 +53,8 @@ module API
 				Character.create(
 						:name => name,
 						:user => user,
-						:race => r.to_mongo,
-						:cclass => c.to_mongo
+						:race => r,
+						:cclass => c
 				)
 			end
 		end

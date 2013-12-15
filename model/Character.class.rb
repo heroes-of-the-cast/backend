@@ -7,16 +7,19 @@ class Character
 	# @return [String] name of the character
 	key :name, String, :minimum => 1
 
+	key :user_id, ObjectId
 	# @return [User] the user that made this character
 	belongs_to :user
-	
-	# @return [Race] the race this char is of
-	one :race
-	
-	# @return [CharClass] the character's class
-	one :cclass, :class_name => 'CharClass'
 
-	#one :stats
+	key :race_id, ObjectId
+	# @return [Race] the race this char is of
+	belongs_to :race
+
+	key :cclass_id, ObjectId
+	# @return [CharClass] the character's class
+	belongs_to :cclass, :class_name => 'CharClass'
+
+	#key :stats
 
 	# Generates stats for the user
 	#before_create do

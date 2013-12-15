@@ -58,6 +58,29 @@ post '/user/:username/character/create' do
 	API::UserMethods::CharacterMethods::create(params[:name], params[:race], params[:class], params[:session_key]).to_json
 end
 
+# Gets all characters for a user
+#
+# @param [String] username the user to get all chars for
+# @return [Array<Character>] all characters for that user
+get '/user/:username/character/list' do
+	content_type :json
+	require_relative 'user/character/list.rb'
+
+	API::UserMethods::CharacterMethods::list(params[:username]).to_json
+end
+
+# Gets a character
+#
+# @param [String] username the user to which the character belongs
+# @param [String] charname the name of the character
+# @return [Character] the requested character
+get '/user/:username/character/:charname' do
+	content_type :json
+	require_relative 'user/character/get.rb'
+
+	API::UserMethods::CharacterMethods::get(params[:username], params[:charname]).to_json
+end
+
 get '/character/race/list' do
 	content_type :json
 	require_relative 'character/race/list.rb'
