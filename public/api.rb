@@ -55,12 +55,7 @@ post '/user/:username/character/create' do
 
 	#TODO: stop assuming that :username is always me here
 
-	begin
-		API::UserMethods::CharacterMethods::create(params[:name], params[:race], params[:class], params[:session_key]).to_json
-	rescue SystemStackError
-		caller.to_json
-	end
-
+	API::UserMethods::CharacterMethods::create(params[:name], params[:race], params[:class], params[:session_key]).to_json
 end
 
 get '/character/race/:alias' do
