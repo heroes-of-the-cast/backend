@@ -15,6 +15,18 @@ post '/user/create' do
 	API::UserMethods::create(params[:username], params[:password]).to_json
 end
 
+# Check if a user exists
+#
+# @param [String] name the name to check
+# @param [Bool] if the user exists
+get '/user/:name/exists' do
+	content_type :json
+	require_relative 'user/create.rb'
+
+	API::UserMethods::exists?(params[:name]).to_json
+end
+
+
 # Gets new user
 #
 # @param [String] name the name to search for
