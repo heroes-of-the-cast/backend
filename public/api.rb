@@ -85,26 +85,26 @@ get '/character/race/list' do
 	content_type :json
 	require_relative 'character/race/list.rb'
 
-	API::Character::Race::getlist.to_json
+	API::CharacterMethods::Race::getlist.to_json
 end
 
 get '/character/race/:alias' do
 	content_type :json
 	require_relative 'character/race/get.rb'
 	
-	API::Character::Race::getrace(params[:alias]).to_json
+	API::CharacterMethods::Race::getrace(params[:alias]).to_json
 end
 
 get '/character/class/list' do
 	content_type :json
 	require_relative 'character/class/list.rb'
 	
-	API::Character::Class::getlist.to_json
+	API::CharacterMethods::Class::getlist.to_json
 end
 
 get '/character/class/:alias' do
 	content_type :json
 	require_relative 'character/class/get.rb'
 	
-	API::Character::Class::getclass(params[:alias]).to_json
+	API::CharacterMethods::Class::getclass(params[:alias]).to_json
 end

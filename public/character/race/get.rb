@@ -5,7 +5,7 @@ require 'Race.class.rb'
 # All API methods
 module API
 	# Static API methods on characters
-	module Character
+	module CharacterMethods
 		# API methods on character races
 		module Race
 			extend self
