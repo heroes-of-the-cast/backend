@@ -72,23 +72,35 @@ end
 
 # Gets all characters for a user
 #
-# @param [String] username the user to get all chars for
+# @param [String] username the user to get all chars for, or me
+# @param [String] session_key only if username == me
 # @return [Array<Character>] all characters for that user
 get '/user/:username/character/list' do
 	content_type :json
+	require_relative 'user/helpers/auth.rb'
 	require_relative 'user/character/list.rb'
+
+	if params[:username].eql? 'me'
+		params[:username] = API::UserMethods::Helpers::Auth::get_logged_in_user(params[:session_key]).username
+	end
 
 	API::UserMethods::CharacterMethods::list(params[:username]).to_json
 end
 
 # Gets a character
 #
-# @param [String] username the user to which the character belongs
+# @param [String] username the user to which the character belongs, or me
 # @param [String] charname the name of the character
+# @param [String] session_key only if username == me
 # @return [Character] the requested character
 get '/user/:username/character/:charname' do
 	content_type :json
+	require_relative 'user/helpers/auth.rb'
 	require_relative 'user/character/get.rb'
+
+	if params[:username].eql? 'me'
+		params[:username] = API::UserMethods::Helpers::Auth::get_logged_in_user(params[:session_key]).username
+	end
 
 	API::UserMethods::CharacterMethods::get(params[:username], params[:charname]).to_json
 end
