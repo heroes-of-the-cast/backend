@@ -50,12 +50,27 @@ module API
 				r = Races.get(race)
 				c = CharClasses.get(cclass)
 
-				Character.create(
+				stats = CharStats.create(
+						:strength => 1,
+						:speed => 1,
+						:serenity => 1,
+						:stamina => 1,
+						:sorcery => 1
+				)
+
+				char = Character.create(
 						:name => name,
 						:user => user,
 						:race => r,
-						:cclass => c
+						:cclass => c,
+						:stats => stats
 				)
+
+				stats.character = char
+				stats.save
+
+				return char
+
 			end
 		end
 	end

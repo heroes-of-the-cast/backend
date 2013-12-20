@@ -12,7 +12,7 @@ class StatModifyingProperty
 	key :description, String
 	
 	# @return [Stats] the actual modifiers. 1 is no modification, <1 is down scaling, >1 is up scaling
-	key :modifiers, Stats
+	key :modifiers, CharStats
 	
 	# Makes a new StatModifyingProperty
 	#

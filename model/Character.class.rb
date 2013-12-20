@@ -19,19 +19,9 @@ class Character
 	# @return [CharClass] the character's class
 	belongs_to :cclass, :class_name => 'CharClass'
 
-	#key :stats
-
-	# Generates stats for the user
-	#before_create do
-	#	# TODO: some randomness
-	#	stats = Stats.new(
-	#			:strength => 1,
-	#			:speed => 1,
-	#			:serenity => 1,
-	#			:stamina => 1,
-	#			:sorcery => 1
-	#	)
-	#end
+	key :stats_id, ObjectId
+	# @return [Stats] the base stats for this character
+	one :stats, :class_name => 'CharStats'
 
 	# Hash representation of this character
 	#

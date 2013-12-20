@@ -32,7 +32,7 @@ module Races
 	def self.make race
 		case race
 		when "neutral"
-			ret = Race.make(race, "Neutral", "Nothing(race type)",Stats.new(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
+			ret = Race.make(race, "Neutral", "Nothing(race type)",CharStats.new(:strength => 1,:speed => 1,:serenity => 1,:stamina => 1,:sorcery => 1))
 		end
 		
 		ret
